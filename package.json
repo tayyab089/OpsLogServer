@@ -1,0 +1,19 @@
+{
+  "name": "opslog",
+  "version": "1.0.0",
+  "description": "opslog server for user login and authentication and online database anagement",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Muhammad Tayyab Qamar",
+  "license": "ISC",
+  "dependencies": {
+    "body": "^5.1.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.13.2",
+    "mongoose-encryption": "^2.1.0",
+    "nodemon": "^2.0.9",
+    "parser": "^0.1.4"
+  }
+}
