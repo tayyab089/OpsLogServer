@@ -12,8 +12,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 // MongoDB Connection and User Schema
-const connectionString = 'mongodb+srv://tayyab089:ghayab089@users.r8g9y.mongodb.net/userDB?retryWrites=true&w=majority'
-
+const connectionString = process.env.connectionString
 mongoose.connect(connectionString, {useNewUrlParser: true, useUnifiedTopology: true})
 
 const userSchema = new mongoose.Schema({
@@ -34,9 +33,7 @@ const userSchema = new mongoose.Schema({
 
 const User = mongoose.model('User', userSchema)
 
-
-
-// Server Routes and Code=============================================================================Start
+// Server Routes and Code
 app.get('/', (req, res) => {
   res.send('Hello World!')
 });
@@ -111,41 +108,6 @@ app.post("/login", async (req, res) => {
   }
   // Our register logic ends here
 });
-
-
-
-//Login Authentication
-// app.post('/login', async (req,res) => {
-//   const username = req.body.username;
-//   const password = md5(req.body.password);
-
-//   if (!(req.body.username && req.body.password)) {
-//     res.send(JSON.stringify("All inputs are required"));
-//     return;
-//   }
-
-//   User.findOne({username: username}, function(err, foundUser){
-//     if(err){
-//       console.log(err);
-//       res.send('user not found')
-//     } else {
-//       if(foundUser) {
-//         console.log(foundUser)
-//         if(foundUser.password === password) {
-//           const token = jwt.sign(
-//             { user_id: foundUser._id, username },
-//             process.env.TOKEN_KEY,
-//             {
-//               expiresIn: "1440h",
-//             }
-//           );
-//           foundUser.token = token
-//           res.status(200).json(foundUser);
-//         } else {res.send('Incorrect Password')}
-//       } else {res.send('user not found')}
-//     } 
-//   })
-// })
 
 //Get All Registered Users
 app.get('/users', function(req,res){
